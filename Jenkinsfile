@@ -12,7 +12,9 @@ node {
 stage 'Static Code Analysis - Sonar'
 node {
     try{
-        mvn 'sonar:sonar -Dsonar.host.url=http://52.91.254.81:9000/sonar:9000'
+        def sonarqubeScannerHome = tool name: 'SonarQubeScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://52.91.254.81:9000/sonar:9000 -Dsonar.projectName=spark -Dsonar.projectVersion=1.0 -Dsonar.projectKey=scala -Dsonar.sources=.src/main/scala"
+      
     }catch(Exception e){
         //emailext subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} "+"Sonar Analysis Failed.", to: "Mukunthan.Govindaraj@aexp.com",body: "..."
         exit
