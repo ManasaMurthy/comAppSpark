@@ -17,7 +17,23 @@ node {
 }
 
 stage 'Artifact Upload'
-
+stage 'Docker build and upload'
+node{
+    
+    docker.withServer('tcp://swarm.example.com:2376', 'swarm-certs') {
+         def customImage = docker.build("my-image:${env.BUILD_ID}")
+          customImage.push()
+         //customImage.push('latest')
+    }
+    
+   
+    customImage.inside {
+        sh 'make test'
+    }
+    customImage.push()
+   
+    
+}
 
 def sbt(args) {
     def sbtHome = tool 'sbt'
