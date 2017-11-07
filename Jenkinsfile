@@ -18,7 +18,7 @@ node {
 
 stage 'Artifact Upload'
 
-node
+node {
     s3Upload(file:'comappspark_2.11-0.1.jar', bucket:'testelevate', path:'target/scala-2.11/comappspark_2.11-0.1.jar')
 }
 
