@@ -9,11 +9,10 @@ node {
     }
 }
 
-node {
-  
+stage 'sonar'
+node {  
     def scannerHome = tool 'sonarqubescanner';
     sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://52.91.254.81:9000/sonar"
-}
 }
 
 def sbt(args) {
