@@ -12,10 +12,7 @@ node {
 node {
   
     def scannerHome = tool 'sonarqubescanner';
-withEnv(["PATH=/usr/bin: ..."]) {
-  withSonarQubeEnv('My SonarQube Server') {
     sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://52.91.254.81:9000/sonar"
-  }
 }
 }
 
