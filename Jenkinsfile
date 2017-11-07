@@ -17,7 +17,7 @@ node {
       
     }catch(Exception e){
         //emailext subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} "+"Sonar Analysis Failed.", to: "Mukunthan.Govindaraj@aexp.com",body: "..."
-        exit
+       // exit
     }
    
 }
