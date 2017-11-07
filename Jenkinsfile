@@ -12,7 +12,10 @@ node {
 stage 'sonar'
 node {  
     def scannerHome = tool 'sonarqubescanner';
-    sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://52.91.254.81:9000/sonar"
+    sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://52.91.254.81:9000/sonar -sonar.projectKey=elevate
+-sonar.projectName=spark
+-sonar.projectVersion=1.0
+-sonar.sources=src/main/scala"
 }
 
 def sbt(args) {
